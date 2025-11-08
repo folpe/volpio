@@ -28,6 +28,8 @@ export const FlowVisualization = () => {
   // Get current and next node for particle animation
   const currentNode = nodes[activeNode]
   const nextNode = nodes[(activeNode + 1) % nodes.length]
+  const isLastNode = activeNode === nodes.length - 1
+  const isFirstNode = activeNode === 0
 
   return (
     <div className="relative flex h-64 w-full items-center justify-center">
@@ -76,17 +78,17 @@ export const FlowVisualization = () => {
           initial={{
             cx: `${currentNode?.x}%`,
             cy: `${currentNode?.y}%`,
-            opacity: 1
+            opacity: isFirstNode ? 0 : 1
           }}
           animate={{
             cx: `${nextNode?.x}%`,
             cy: `${nextNode?.y}%`,
-            opacity: [1, 0.8, 1]
+            opacity: isLastNode ? [1, 0.8, 0] : isFirstNode ? [0, 0.5, 1] : [1, 0.8, 1]
           }}
           transition={{
             duration: 2,
             ease: "easeInOut",
-            opacity: { duration: 2, repeat: 0 }
+            opacity: { duration: 2, ease: "easeInOut" }
           }}
         />
       </svg>
