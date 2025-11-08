@@ -6,12 +6,13 @@ interface Entity {
   role: string
   angle: number
   color: string
+  url?: string
 }
 
 export const EcosystemOrbit = () => {
   const entities: Entity[] = [
-    { name: "Void Corp", role: "L'Origine", angle: -90, color: "#64748b" },
-    { name: "v0rn", role: "La Forge", angle: 150, color: "#3b82f6" },
+    { name: "Void Corp", role: "L'Origine", angle: -90, color: "#64748b", url: "https://voidcorp.io" },
+    { name: "v0rn", role: "La Forge", angle: 150, color: "#3b82f6", url: "https://v0rn.com" },
     { name: "Volpio", role: "Le Flux", angle: 30, color: "#f97316" },
   ]
 
@@ -110,16 +111,38 @@ export const EcosystemOrbit = () => {
                   damping: 10,
                 }}
               >
-                <div
-                  className="mb-1"
-                  style={{
-                    fontFamily: "'Montserrat Alternates', sans-serif",
-                    color: entity.color,
-                  }}
-                >
-                  {entity.name}
-                </div>
-                <div className="text-xs text-white/60">{entity.role}</div>
+                {entity.url ? (
+                  <a
+                    href={entity.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div
+                      className="mb-1"
+                      style={{
+                        fontFamily: "'Montserrat Alternates', sans-serif",
+                        color: entity.color,
+                      }}
+                    >
+                      {entity.name}
+                    </div>
+                    <div className="text-xs text-white/60">{entity.role}</div>
+                  </a>
+                ) : (
+                  <>
+                    <div
+                      className="mb-1"
+                      style={{
+                        fontFamily: "'Montserrat Alternates', sans-serif",
+                        color: entity.color,
+                      }}
+                    >
+                      {entity.name}
+                    </div>
+                    <div className="text-xs text-white/60">{entity.role}</div>
+                  </>
+                )}
 
                 {/* Active indicator for Volpio */}
                 {entity.name === "Volpio" && (

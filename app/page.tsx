@@ -79,7 +79,17 @@ export default function App() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="inline-block rounded-full border border-white/20 bg-white/5 px-4 py-2 backdrop-blur-sm"
           >
-            <span className="text-sm text-white/60">Une entité Void Corp</span>
+            <span className="text-sm text-white/60">
+              Une entité{" "}
+              <a
+                href="https://voidcorp.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white/80 transition-colors"
+              >
+                Void Corp
+              </a>
+            </span>
           </motion.div>
         </motion.div>
 
@@ -270,7 +280,7 @@ export default function App() {
                   duration: 0.6,
                   delay: index * 0.1,
                 }}
-                className="group relative cursor-pointer overflow-hidden rounded-xl"
+                className="group relative overflow-hidden rounded-xl"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -315,11 +325,14 @@ export default function App() {
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
+                asChild
                 className="rounded-full border-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 px-8 py-6 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]"
                 style={{ fontSize: "1.125rem" }}
               >
-                Prendre Contact
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <a href="mailto:florent.pellegrin@volpio.com">
+                  Prendre Contact
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
             </motion.div>
           </motion.div>
@@ -332,7 +345,7 @@ export default function App() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
               <VolpioLogo className="h-8 w-8" />
-              <span className="text-white/60">© 2025 Void Corp / Volpio</span>
+              <span className="text-white/60">© 2025 Volpio</span>
             </div>
             <div className="text-white/40">Forgé en France</div>
           </div>
