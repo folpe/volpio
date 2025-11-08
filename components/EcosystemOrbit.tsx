@@ -73,29 +73,32 @@ export const EcosystemOrbit = () => {
 
         return (
           <React.Fragment key={entity.name}>
-            {/* Connection line to center - only visible on hover */}
-            <motion.div
-              className="absolute z-10"
-              style={{
-                left: "50%",
-                top: "calc(50% - 1px)",
-                width: radius,
-                height: 2,
-                background: `linear-gradient(to right, rgba(255, 255, 255, 0.5), ${entity.color})`,
-                transformOrigin: "0 50%",
-                transform: `rotate(${entity.angle}deg)`,
-                boxShadow: `0 0 10px ${entity.color}80`,
-              }}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{
-                scaleX: hoveredIndex === index ? 1 : 0,
-                opacity: hoveredIndex === index ? 1 : 0,
-              }}
-              transition={{
-                duration: 0.3,
-                ease: "easeOut",
-              }}
-            />
+            {/* Connection line using SVG for precise positioning */}
+            <svg
+              className="absolute inset-0 pointer-events-none overflow-visible"
+              style={{ width: '100%', height: '100%' }}
+            >
+              <motion.line
+                x1="50%"
+                y1="50%"
+                x2={`calc(50% + ${x}px)`}
+                y2={`calc(50% + ${y}px)`}
+                stroke={entity.color}
+                strokeWidth="2"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: hoveredIndex === index ? 1 : 0,
+                  opacity: hoveredIndex === index ? 1 : 0,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                }}
+                style={{
+                  filter: `drop-shadow(0 0 10px ${entity.color}80)`,
+                }}
+              />
+            </svg>
 
             {/* Position marker circle */}
             <motion.div
@@ -118,13 +121,12 @@ export const EcosystemOrbit = () => {
               }}
             />
 
-            {/* Entity card container */}
+            {/* Entity card */}
             <motion.div
-              className="absolute"
+              className="absolute z-30"
               style={{
                 left: `calc(50% + ${x}px)`,
                 top: `calc(50% + ${y}px)`,
-                transform: "translate(-50%, -50%)",
               }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{
@@ -137,12 +139,16 @@ export const EcosystemOrbit = () => {
                 type: "spring",
                 stiffness: 100,
               }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               <motion.div
-                className="relative w-[140px] rounded-xl border-2 p-4 text-center backdrop-blur-md"
+                className="relative rounded-xl border-2 p-4 text-center backdrop-blur-md"
                 style={{
                   borderColor: `${entity.color}40`,
                   background: `linear-gradient(135deg, ${entity.color}20, ${entity.color}05)`,
+                  width: "140px",
+                  transform: "translate(-50%, -50%)",
                 }}
                 whileHover={{
                   scale: 1.1,
@@ -154,8 +160,6 @@ export const EcosystemOrbit = () => {
                   stiffness: 400,
                   damping: 10,
                 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
                 {entity.url ? (
                   <a
