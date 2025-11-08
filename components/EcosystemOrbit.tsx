@@ -127,6 +127,8 @@ export const EcosystemOrbit = () => {
               style={{
                 left: `calc(50% + ${x}px)`,
                 top: `calc(50% + ${y}px)`,
+                x: "-50%",
+                y: "-50%",
               }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{
@@ -148,7 +150,9 @@ export const EcosystemOrbit = () => {
                   borderColor: `${entity.color}40`,
                   background: `linear-gradient(135deg, ${entity.color}20, ${entity.color}05)`,
                   width: "140px",
-                  transform: "translate(-50%, -50%)",
+                }}
+                animate={{
+                  borderColor: `${entity.color}40`,
                 }}
                 whileHover={{
                   scale: 1.1,
