@@ -81,9 +81,9 @@ export const FlowVisualization = () => {
             opacity: isFirstNode ? 0 : 1
           }}
           animate={{
-            cx: `${nextNode?.x}%`,
-            cy: `${nextNode?.y}%`,
-            opacity: isLastNode ? [1, 0.8, 0] : isFirstNode ? [0, 0.5, 1] : [1, 0.8, 1]
+            cx: isLastNode ? `${currentNode?.x}%` : `${nextNode?.x}%`,
+            cy: isLastNode ? `${currentNode?.y}%` : `${nextNode?.y}%`,
+            opacity: isLastNode ? [1, 0.5, 0] : isFirstNode ? [0, 0.5, 1] : [1, 0.8, 1]
           }}
           transition={{
             duration: 2,
