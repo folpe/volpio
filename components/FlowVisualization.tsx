@@ -10,7 +10,6 @@ interface Node {
 
 export const FlowVisualization = () => {
   const [activeNode, setActiveNode] = useState(0)
-  const [particlePosition, setParticlePosition] = useState(0)
 
   const nodes: Node[] = [
     { id: 0, x: 10, y: 50, label: "Auditer" },
@@ -26,38 +25,9 @@ export const FlowVisualization = () => {
     return () => clearInterval(interval)
   }, [nodes.length])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setParticlePosition((prev) => (prev + 0.5) % 100)
-    }, 20)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Calculate particle position along the path
-  const getParticleCoords = (progress: number) => {
-    const totalSegments = nodes.length - 1
-    const segmentLength = 100 / totalSegments
-    const currentSegment = Math.floor(progress / segmentLength)
-    const segmentProgress = (progress % segmentLength) / segmentLength
-
-    if (currentSegment >= totalSegments) {
-      return { x: nodes[nodes.length - 1]?.x, y: nodes[nodes.length - 1]?.y }
-    }
-
-    const startNode = nodes[currentSegment]
-    const endNode = nodes[currentSegment + 1]
-
-    if (!startNode || !endNode) {
-      return { x: nodes[0]?.x ?? 0, y: nodes[0]?.y ?? 0 }
-    }
-
-    return {
-      x: startNode.x + (endNode.x - startNode.x) * segmentProgress,
-      y: startNode.y + (endNode.y - startNode.y) * segmentProgress,
-    }
-  }
-
-  const particleCoords = getParticleCoords(particlePosition)
+  // Get current and next node for particle animation
+  const currentNode = nodes[activeNode]
+  const nextNode = nodes[(activeNode + 1) % nodes.length]
 
   return (
     <div className="relative flex h-64 w-full items-center justify-center">
@@ -71,7 +41,18 @@ export const FlowVisualization = () => {
           </linearGradient>
         </defs>
 
-        {/* Connection line */}
+        {/* Background line for continuity */}
+        <line
+          x1="10%"
+          y1="50%"
+          x2="85%"
+          y2="50%"
+          stroke="rgba(255, 255, 255, 0.1)"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+
+        {/* Active gradient line */}
         <motion.line
           x1="10%"
           y1="50%"
@@ -81,19 +62,32 @@ export const FlowVisualization = () => {
           strokeWidth="3"
           strokeLinecap="round"
           initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
+          animate={{ pathLength: 1, opacity: 0.6 }}
           transition={{ duration: 2, ease: "easeInOut" }}
         />
 
-        {/* Animated flow particle */}
+        {/* Animated flow particle - synchronized with active node */}
         <motion.circle
-          cx={`${particleCoords.x}%`}
-          cy={`${particleCoords.y}%`}
+          key={`particle-${activeNode}`}
+          cx={`${currentNode?.x}%`}
+          cy={`${currentNode?.y}%`}
           r="6"
           fill="#ffffff"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          initial={{
+            cx: `${currentNode?.x}%`,
+            cy: `${currentNode?.y}%`,
+            opacity: 1
+          }}
+          animate={{
+            cx: `${nextNode?.x}%`,
+            cy: `${nextNode?.y}%`,
+            opacity: [1, 0.8, 1]
+          }}
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+            opacity: { duration: 2, repeat: 0 }
+          }}
         />
       </svg>
 
