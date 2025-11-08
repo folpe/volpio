@@ -280,7 +280,7 @@ export default function App() {
                   duration: 0.6,
                   delay: index * 0.1,
                 }}
-                className="group relative cursor-pointer overflow-hidden rounded-xl"
+                className="group relative overflow-hidden rounded-xl"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -342,18 +342,7 @@ export default function App() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
               <VolpioLogo className="h-8 w-8" />
-              <span className="text-white/60">
-                © 2025{" "}
-                <a
-                  href="https://voidcorp.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white/80 transition-colors"
-                >
-                  Void Corp
-                </a>{" "}
-                / Volpio
-              </span>
+              <span className="text-white/60">© 2025 Volpio</span>
             </div>
             <div className="text-white/40">Forgé en France</div>
           </div>
