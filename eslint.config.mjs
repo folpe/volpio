@@ -94,6 +94,12 @@ const config = typescriptEslint.config(
         },
       ],
     },
+  },
+  {
+    files: ["middleware.ts"],
+    rules: {
+      "import/order": "off",
+    },
   }
 )
 

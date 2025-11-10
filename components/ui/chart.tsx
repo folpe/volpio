@@ -244,7 +244,13 @@ interface ChartLegendContentProps extends Omit<React.ComponentProps<"div">, "pay
   nameKey?: string
 }
 
-function ChartLegendContent({ className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }: ChartLegendContentProps) {
+function ChartLegendContent({
+  className,
+  hideIcon = false,
+  payload,
+  verticalAlign = "bottom",
+  nameKey,
+}: ChartLegendContentProps) {
   const { config } = useChart()
 
   if (!payload?.length) {

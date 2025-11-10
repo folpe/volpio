@@ -9,6 +9,7 @@ import { locales } from "@/i18n/request"
 import "styles/tailwind.css"
 
 export function generateStaticParams() {
+  // With localePrefix: "as-needed", the default locale (fr) is rendered at the root
   return locales.map((locale) => ({ locale }))
 }
 

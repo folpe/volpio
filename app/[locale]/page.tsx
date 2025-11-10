@@ -89,7 +89,7 @@ export default function App() {
                 href="https://voidcorp.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white/80 transition-colors"
+                className="transition-colors hover:text-white/80"
               >
                 Void Corp
               </a>
