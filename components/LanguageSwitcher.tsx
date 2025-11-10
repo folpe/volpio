@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation"
 import { useLocale } from "next-intl"
 import { useEffect, useRef, useState, useTransition } from "react"
 
-const languageButtonVariants = cva("w-full px-4 py-2 text-left text-sm transition-colors", {
+const languageButtonVariants = cva("w-full px-4 py-2 text-left text-sm font-medium transition-colors rounded-xl", {
   variants: {
     active: {
-      true: "bg-violet-600/20 text-violet-300",
-      false: "text-gray-300 hover:bg-violet-600/10 hover:text-violet-300",
+      true: "bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white",
+      false: "text-white/80 hover:bg-white/10",
     },
   },
   defaultVariants: {
@@ -74,13 +74,13 @@ export function LanguageSwitcher() {
       <div className="relative" ref={dropdownRef}>
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 rounded-full border border-violet-500/30 bg-gray-900/50 px-4 py-2 backdrop-blur-sm transition-all duration-300 hover:border-violet-400/50 hover:bg-gray-900/70"
+          className="flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-4 py-2 backdrop-blur-sm transition-all duration-200 hover:border-white/30 hover:bg-black/40"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           disabled={isPending}
         >
-          <Globe className="h-4 w-4 text-violet-400" strokeWidth={2} />
-          <span className="text-sm font-medium text-violet-300/90 uppercase">{locale}</span>
+          <Globe className="h-4 w-4 text-white/80" strokeWidth={2} />
+          <span className="text-sm font-medium text-white/90 uppercase">{locale}</span>
         </motion.button>
 
         {isOpen && (
@@ -88,20 +88,22 @@ export function LanguageSwitcher() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full right-0 mt-2 min-w-[100px] overflow-hidden rounded-lg border border-violet-500/30 bg-gray-900/95 backdrop-blur-md"
+            className="absolute top-full right-0 mt-2 overflow-hidden rounded-2xl border border-white/20 bg-black/80 backdrop-blur-md"
           >
-            <button
-              onClick={() => handleLanguageChange("en")}
-              className={languageButtonVariants({ active: locale === "en" })}
-            >
-              English
-            </button>
-            <button
-              onClick={() => handleLanguageChange("fr")}
-              className={languageButtonVariants({ active: locale === "fr" })}
-            >
-              Français
-            </button>
+            <div className="flex flex-col p-1">
+              <button
+                onClick={() => handleLanguageChange("en")}
+                className={languageButtonVariants({ active: locale === "en" })}
+              >
+                English
+              </button>
+              <button
+                onClick={() => handleLanguageChange("fr")}
+                className={languageButtonVariants({ active: locale === "fr" })}
+              >
+                Français
+              </button>
+            </div>
           </motion.div>
         )}
       </div>
