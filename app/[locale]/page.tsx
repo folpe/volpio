@@ -13,6 +13,7 @@ import { FlowVisualization } from "@/components/FlowVisualization"
 import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 import { Button } from "@/components/ui/button"
 import { VolpioLogo } from "@/components/VolpioLogo"
+import VolpioLogoHorWhite from "@/assets/Volpio_logo-hor-white.svg"
 
 export default function App() {
   const t = useTranslations()
@@ -345,7 +346,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
-              <VolpioLogo className="h-8 w-8" />
+              <Image src={VolpioLogoHorWhite} alt="Volpio" className="h-8 w-auto" />
               <span className="text-white/60">{t("footer.copyright")}</span>
             </div>
             <div className="text-white/40">{t("footer.location")}</div>
