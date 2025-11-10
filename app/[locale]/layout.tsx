@@ -1,12 +1,12 @@
+import "styles/tailwind.css"
+
 import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
-import { notFound } from "next/navigation"
 
 import VolpioLogotype from "@/assets/Volpio_logotype.svg"
 import { locales } from "@/i18n/request"
-
-import "styles/tailwind.css"
 
 export function generateStaticParams() {
   // With localePrefix: "as-needed", the default locale (fr) is rendered at the root
