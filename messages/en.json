@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "Volpio",
+    "description": "Intelligence in motion"
+  },
+  "hero": {
+    "headline": "Intelligence in motion.",
+    "subline": "Consulting, architecture, and intelligent automation for modern teams.",
+    "voidcorp": "A"
+  },
+  "about": {
+    "intro": "I help businesses design, build, and scale their digital systems with precision.",
+    "highlight": "From React front-end architecture to AI-driven automation, Volpio connects development and intelligence."
+  },
+  "services": {
+    "title": "Core Services",
+    "react": {
+      "title": "React & Frontend Architecture",
+      "description": "Scalable and maintainable interfaces."
+    },
+    "automation": {
+      "title": "Automation & AI",
+      "description": "Smart and connected workflows."
+    },
+    "audit": {
+      "title": "Audit & Technical Consulting",
+      "description": "Review and optimization of your systems."
+    }
+  },
+  "process": {
+    "title": "The Process",
+    "subtitle": "A continuous flow linking systems and ideas"
+  },
+  "ecosystem": {
+    "title": "The Ecosystem",
+    "subtitle": "Three entities, one vision"
+  },
+  "projects": {
+    "title": "Recent Projects",
+    "items": {
+      "banking": {
+        "title": "Banking orchestration platform",
+        "category": "Finance · BNP Paribas CIB",
+        "metric": "2M+ operations/day"
+      },
+      "validation": {
+        "title": "Bank of France regulatory validation",
+        "category": "Fintech · My Money Bank",
+        "metric": "0 → Production in 9 months"
+      },
+      "video": {
+        "title": "High-traffic video platform",
+        "category": "Media · Le Figaro",
+        "metric": "Live streaming & GDPR"
+      }
+    }
+  },
+  "cta": {
+    "title": "Let's build intelligent systems together.",
+    "button": "Get in Touch"
+  },
+  "footer": {
+    "copyright": "© 2025 Volpio",
+    "location": "Forged in France"
+  }
+}

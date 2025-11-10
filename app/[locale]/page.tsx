@@ -3,16 +3,20 @@
 import { ArrowRight, Database, Layers, Zap } from "lucide-react"
 import { motion, useScroll, useTransform } from "motion/react"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 import React, { useEffect } from "react"
 
 import { AnimatedGradientBg } from "@/components/AnimatedGradientBg"
 import { CapabilityCard } from "@/components/CapabilityCard"
 import { EcosystemOrbit } from "@/components/EcosystemOrbit"
 import { FlowVisualization } from "@/components/FlowVisualization"
+import { LanguageSwitcher } from "@/components/LanguageSwitcher"
 import { Button } from "@/components/ui/button"
 import { VolpioLogo } from "@/components/VolpioLogo"
+import VolpioLogoHorWhite from "@/assets/Volpio_logo-hor-white.svg"
 
 export default function App() {
+  const t = useTranslations()
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9])
@@ -31,6 +35,7 @@ export default function App() {
       className="min-h-screen overflow-hidden bg-[#0a0a0f] text-white"
       style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
     >
+      <LanguageSwitcher />
       {/* Hero Section */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         <AnimatedGradientBg />
@@ -58,7 +63,7 @@ export default function App() {
               fontWeight: 700,
             }}
           >
-            L'intelligence en mouvement.
+            {t("hero.headline")}
           </motion.h2>
 
           {/* Subline */}
@@ -69,7 +74,7 @@ export default function App() {
             className="mx-auto mb-6 max-w-2xl text-white/70"
             style={{ fontSize: "1.25rem" }}
           >
-            Conseil, architecture et automatisation intelligente pour équipes modernes.
+            {t("hero.subline")}
           </motion.p>
 
           {/* Tag */}
@@ -80,12 +85,12 @@ export default function App() {
             className="inline-block rounded-full border border-white/20 bg-white/5 px-4 py-2 backdrop-blur-sm"
           >
             <span className="text-sm text-white/60">
-              Une entité{" "}
+              {t("hero.voidcorp")}{" "}
               <a
                 href="https://voidcorp.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white/80 transition-colors"
+                className="transition-colors hover:text-white/80"
               >
                 Void Corp
               </a>
@@ -119,12 +124,9 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <p className="leading-relaxed text-white/80" style={{ fontSize: "1.5rem" }}>
-              J'aide les entreprises à concevoir, construire et faire évoluer leurs systèmes digitaux avec précision.
+              {t("about.intro")}
               <br />
-              <span className="text-white">
-                De l'architecture front-end React à l'automatisation pilotée par l'IA, Volpio connecte développement et
-                intelligence.
-              </span>
+              <span className="text-white">{t("about.highlight")}</span>
             </p>
           </motion.div>
         </div>
@@ -144,26 +146,26 @@ export default function App() {
               fontWeight: 700,
             }}
           >
-            Services Principaux
+            {t("services.title")}
           </motion.h2>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <CapabilityCard
               icon={Zap}
-              title="React & Architecture Frontend"
-              description="Interfaces scalables et maintenables."
+              title={t("services.react.title")}
+              description={t("services.react.description")}
               delay={0}
             />
             <CapabilityCard
               icon={Database}
-              title="Automatisation & IA"
-              description="Workflows intelligents et connectés."
+              title={t("services.automation.title")}
+              description={t("services.automation.description")}
               delay={0.2}
             />
             <CapabilityCard
               icon={Layers}
-              title="Audit & Conseil Technique"
-              description="Revue et optimisation de vos systèmes."
+              title={t("services.audit.title")}
+              description={t("services.audit.description")}
               delay={0.4}
             />
           </div>
@@ -184,7 +186,7 @@ export default function App() {
               fontWeight: 700,
             }}
           >
-            Le Processus
+            {t("process.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -193,7 +195,7 @@ export default function App() {
             transition={{ delay: 0.2 }}
             className="mb-16 text-center text-white/60"
           >
-            Un flux continu reliant systèmes et idées
+            {t("process.subtitle")}
           </motion.p>
 
           <FlowVisualization />
@@ -214,7 +216,7 @@ export default function App() {
               fontWeight: 700,
             }}
           >
-            L'Écosystème
+            {t("ecosystem.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -223,7 +225,7 @@ export default function App() {
             transition={{ delay: 0.2 }}
             className="mb-16 text-center text-white/60"
           >
-            Trois entités, une vision
+            {t("ecosystem.subtitle")}
           </motion.p>
 
           <EcosystemOrbit />
@@ -244,7 +246,7 @@ export default function App() {
               fontWeight: 700,
             }}
           >
-            Projets Récents
+            {t("projects.title")}
           </motion.h2>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -252,23 +254,23 @@ export default function App() {
               {
                 image:
                   "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-                title: "Plateforme d'orchestration bancaire",
-                category: "Finance · BNP Paribas CIB",
-                metric: "2M+ opérations/jour",
+                title: t("projects.items.banking.title"),
+                category: t("projects.items.banking.category"),
+                metric: t("projects.items.banking.metric"),
               },
               {
                 image:
                   "https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-                title: "Validation réglementaire Banque de France",
-                category: "Fintech · My Money Bank",
-                metric: "0 → Production en 9 mois",
+                title: t("projects.items.validation.title"),
+                category: t("projects.items.validation.category"),
+                metric: t("projects.items.validation.metric"),
               },
               {
                 image:
                   "https://images.unsplash.com/photo-1626785774573-4b799315345d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-                title: "Plateforme vidéo à fort trafic",
-                category: "Média · Le Figaro",
-                metric: "Live streaming & RGPD",
+                title: t("projects.items.video.title"),
+                category: t("projects.items.video.category"),
+                metric: t("projects.items.video.metric"),
               },
             ].map((project, index) => (
               <motion.div
@@ -320,7 +322,7 @@ export default function App() {
                 fontWeight: 700,
               }}
             >
-              Construisons ensemble des systèmes intelligents.
+              {t("cta.title")}
             </h2>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -330,7 +332,7 @@ export default function App() {
                 style={{ fontSize: "1.125rem" }}
               >
                 <a href="mailto:florent.pellegrin@volpio.com">
-                  Prendre Contact
+                  {t("cta.button")}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
@@ -344,10 +346,10 @@ export default function App() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
-              <VolpioLogo className="h-8 w-8" />
-              <span className="text-white/60">© 2025 Volpio</span>
+              <Image src={VolpioLogoHorWhite} alt="Volpio" className="h-8 w-auto" />
+              <span className="text-white/60">{t("footer.copyright")}</span>
             </div>
-            <div className="text-white/40">Forgé en France</div>
+            <div className="text-white/40">{t("footer.location")}</div>
           </div>
         </div>
       </footer>

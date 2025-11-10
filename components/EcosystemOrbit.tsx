@@ -121,9 +121,7 @@ export const EcosystemOrbit = () => {
         return (
           <React.Fragment key={entity.name}>
             {/* Connection line using SVG for precise positioning */}
-            <svg
-              className="absolute inset-0 pointer-events-none size-full overflow-visible"
-            >
+            <svg className="pointer-events-none absolute inset-0 size-full overflow-visible">
               <motion.line
                 x1="50%"
                 y1="50%"

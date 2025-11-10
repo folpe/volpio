@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "Volpio",
+    "description": "L'intelligence en mouvement"
+  },
+  "hero": {
+    "headline": "L'intelligence en mouvement.",
+    "subline": "Conseil, architecture et automatisation intelligente pour équipes modernes.",
+    "voidcorp": "Une entité"
+  },
+  "about": {
+    "intro": "J'aide les entreprises à concevoir, construire et faire évoluer leurs systèmes digitaux avec précision.",
+    "highlight": "De l'architecture front-end React à l'automatisation pilotée par l'IA, Volpio connecte développement et intelligence."
+  },
+  "services": {
+    "title": "Services Principaux",
+    "react": {
+      "title": "React & Architecture Frontend",
+      "description": "Interfaces scalables et maintenables."
+    },
+    "automation": {
+      "title": "Automatisation & IA",
+      "description": "Workflows intelligents et connectés."
+    },
+    "audit": {
+      "title": "Audit & Conseil Technique",
+      "description": "Revue et optimisation de vos systèmes."
+    }
+  },
+  "process": {
+    "title": "Le Processus",
+    "subtitle": "Un flux continu reliant systèmes et idées"
+  },
+  "ecosystem": {
+    "title": "L'Écosystème",
+    "subtitle": "Trois entités, une vision"
+  },
+  "projects": {
+    "title": "Projets Récents",
+    "items": {
+      "banking": {
+        "title": "Plateforme d'orchestration bancaire",
+        "category": "Finance · BNP Paribas CIB",
+        "metric": "2M+ opérations/jour"
+      },
+      "validation": {
+        "title": "Validation réglementaire Banque de France",
+        "category": "Fintech · My Money Bank",
+        "metric": "0 → Production en 9 mois"
+      },
+      "video": {
+        "title": "Plateforme vidéo à fort trafic",
+        "category": "Média · Le Figaro",
+        "metric": "Live streaming & RGPD"
+      }
+    }
+  },
+  "cta": {
+    "title": "Construisons ensemble des systèmes intelligents.",
+    "button": "Prendre Contact"
+  },
+  "footer": {
+    "copyright": "© 2025 Volpio",
+    "location": "Forgé en France"
+  }
+}
