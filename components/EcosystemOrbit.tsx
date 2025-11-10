@@ -145,11 +145,12 @@ export const EcosystemOrbit = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <motion.div
-                className="relative rounded-xl border-2 p-4 text-center backdrop-blur-md"
+                className="relative rounded-full border-2 p-6 text-center backdrop-blur-md flex flex-col items-center justify-center"
                 style={{
                   borderColor: `${entity.color}40`,
                   background: `linear-gradient(135deg, ${entity.color}20, ${entity.color}05)`,
                   width: "140px",
+                  height: "140px",
                 }}
                 animate={{
                   borderColor: `${entity.color}40`,
@@ -173,7 +174,7 @@ export const EcosystemOrbit = () => {
                     className="block"
                   >
                     <div
-                      className="mb-1"
+                      className="mb-1 text-sm font-semibold"
                       style={{
                         fontFamily: "'Montserrat Alternates', sans-serif",
                         color: entity.color,
@@ -181,12 +182,12 @@ export const EcosystemOrbit = () => {
                     >
                       {entity.name}
                     </div>
-                    <div className="text-xs text-white/60">{entity.role}</div>
+                    <div className="text-[10px] text-white/60">{entity.role}</div>
                   </a>
                 ) : (
                   <>
                     <div
-                      className="mb-1"
+                      className="mb-1 text-sm font-semibold"
                       style={{
                         fontFamily: "'Montserrat Alternates', sans-serif",
                         color: entity.color,
@@ -194,7 +195,7 @@ export const EcosystemOrbit = () => {
                     >
                       {entity.name}
                     </div>
-                    <div className="text-xs text-white/60">{entity.role}</div>
+                    <div className="text-[10px] text-white/60">{entity.role}</div>
                   </>
                 )}
 
