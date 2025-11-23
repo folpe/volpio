@@ -1,12 +1,12 @@
+import { cva } from "class-variance-authority"
 import { motion } from "motion/react"
 import React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
 
 interface Entity {
   name: string
   role: string
   angle: number
-  variant: "voidcorp" | "v0rn" | "volpio"
+  variant: "voidcorp" | "voidfactory" | "volpio"
   url?: string
 }
 
@@ -16,7 +16,7 @@ const entityVariants = cva(
     variants: {
       variant: {
         voidcorp: "border-slate-500/25 bg-gradient-to-br from-slate-500/15 to-slate-500/5",
-        v0rn: "border-blue-500/25 bg-gradient-to-br from-blue-500/15 to-blue-500/5",
+        voidfactory: "border-blue-500/25 bg-gradient-to-br from-blue-500/15 to-blue-500/5",
         volpio: "border-orange-500/25 bg-gradient-to-br from-orange-500/15 to-orange-500/5",
       },
     },
@@ -27,7 +27,7 @@ const markerVariants = cva("absolute z-20 size-3 rounded-full -translate-x-1/2 -
   variants: {
     variant: {
       voidcorp: "bg-slate-500 shadow-[0_0_10px_#64748b]",
-      v0rn: "bg-blue-500 shadow-[0_0_10px_#3b82f6]",
+      voidfactory: "bg-blue-500 shadow-[0_0_10px_#3b82f6]",
       volpio: "bg-orange-500 shadow-[0_0_10px_#f97316]",
     },
   },
@@ -37,7 +37,7 @@ const textVariants = cva("mb-1 text-sm font-semibold", {
   variants: {
     variant: {
       voidcorp: "text-slate-500",
-      v0rn: "text-blue-500",
+      voidfactory: "text-blue-500",
       volpio: "text-orange-500",
     },
   },
@@ -47,7 +47,7 @@ const indicatorVariants = cva("mt-2 mx-auto size-2 rounded-full", {
   variants: {
     variant: {
       voidcorp: "bg-slate-500",
-      v0rn: "bg-blue-500",
+      voidfactory: "bg-blue-500",
       volpio: "bg-orange-500",
     },
   },
@@ -56,14 +56,14 @@ const indicatorVariants = cva("mt-2 mx-auto size-2 rounded-full", {
 // Mapping des couleurs hex pour les éléments qui en ont besoin (SVG, boxShadow)
 const colorMap = {
   voidcorp: "#64748b",
-  v0rn: "#3b82f6",
+  voidfactory: "#3b82f6",
   volpio: "#f97316",
 }
 
 export const EcosystemOrbit = () => {
   const entities: Entity[] = [
     { name: "Void Corp", role: "L'Origine", angle: -90, variant: "voidcorp", url: "https://voidcorp.io" },
-    { name: "v0rn", role: "La Forge", angle: 150, variant: "v0rn", url: "https://v0rn.com" },
+    { name: "voidfactory", role: "La Forge", angle: 150, variant: "voidfactory", url: "https://factory.voidcorp.io" },
     { name: "Volpio", role: "Le Flux", angle: 30, variant: "volpio" },
   ]
 
